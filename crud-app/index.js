@@ -1,12 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyparser = require("body-parser");
+const cors = require("cors");
 
 mongoose.connect(
-    );
+    "mongodb+srv://andreditvirs:Ykl65tsL4EDXNruC@cluster0.le2fu.mongodb.net/CRUD-MERN-STACK?retryWrites=true&w=majority"
+);
 
 const app = express();
 app.use(bodyparser.json());
+app.use(cors());
 
 app.use("/posts", require("./routes/post"));
 
