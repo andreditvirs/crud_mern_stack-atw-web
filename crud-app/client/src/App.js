@@ -1,40 +1,25 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import { BrowserRouter, Route } from 'react-router-dom';
+import LandingPage from "./components/LandingPage";
+import DetailPage from "./components/DetailPage";
+import CreatePost from "./components/CreatePost";
+import EditPost from "./components/EditPost";
+import Header from "./components/Header";
 
 class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      posts: []
-    }
-  }
-
-  componentDidMount(){
-    this.getPosts();
-  }
-
-  getPosts(){
-    axios.get("http://localhost:5000/posts").then(res => {
-      if(res.data.success){
-        this.setState({
-          posts: res.data.posts,
-        });
-        console.log(this.state.posts);
-      }
-    });
-  }
-
-  render() { 
-  return <div>{this.state.posts.map(
-    post => (
-      <div>
-      <p>{post.title}</p>
-      <p>{post.description}</p>
-      <p>{post.postCategory}</p>
+  render(){
+    return (
+      <BrowserRouter>
+      <div className="container">
+        <Header />
+        <Route path="/" exact component={ LandingPage }/>
+        <Route path="/posts/:id" component={ DetailPage }/>
+        <Route path="/add" component={ CreatePost }/>
+        <Route path="/edt/:id" component={ EditPost }/>
       </div>
-    )
-  )}
-  </div>
+      </BrowserRouter>
+    );
   }
 }
  
