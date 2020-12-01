@@ -16,7 +16,7 @@ class App extends Component {
         <Route path="/" exact component={ LandingPage }/>
         <Route path="/posts/:id" component={ DetailPage }/>
         <Route path="/add" component={ CreatePost }/>
-        <Route path="/edt/:id" component={ EditPost }/>
+        <Route path="/edit/:id" component={ EditPost }/>
       </div>
       </BrowserRouter>
     );
